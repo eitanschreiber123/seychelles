@@ -1,7 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
-import 'styles/global-styles'
-
+import { ServerStyleSheet, createGlobalStyle } from 'styled-components'
+const GlobalStyle = createGlobalStyle`
+  body {width: 100%;margin: 0;padding: 0;}
+`
 export default class SiteDocument extends Document {
   render () {
     const sheet = new ServerStyleSheet()
@@ -16,12 +17,11 @@ export default class SiteDocument extends Document {
           <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.7.4/tachyons.min.css' />
           {styleTags}
         </Head>
-        <body>
-          <div className='root'>
-            {main}
-          </div>
+        <>
+          <GlobalStyle />
+          <div className='root'>{main}</div>
           <NextScript />
-        </body>
+        </>
       </html>
     )
   }
