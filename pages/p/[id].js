@@ -41,7 +41,7 @@ class Post extends Component {
       <Layout>
         <Head><title>{this.props.postData.title}</title></Head>
         <Wrapper>
-          <div className={"other"}>{Products.map(p => <div><div style={{width: "100px", height: "100px", BackgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${p.image})`, marginRight: `20px`}}></div><Link href="/p/[id]" as={`/p/${p.id}`}><a>{p.other ? p.other : p.id}</a></Link></div>)}</div>
+          <div className={"other"}>{Products.map(p => <div><div style={{width: "100px", height: "100px", BackgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${p.image})`, marginRight: `20px`}}></div><Link href="/p/[id]" as={`/p/${p.route}`}><a>{p.other ? p.other : p.id}</a></Link></div>)}</div>
           <div style={{width: "200px", height: "200px", BackgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${this.props.postData.image})`, marginRight: `20px`}}></div>
           <div>
             <h1>{this.props.postData.other ? this.props.postData.other : this.props.postData.title}</h1>

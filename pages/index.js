@@ -95,7 +95,7 @@ class IndexPage extends Component {
         </div>
         <p className="p-second">We are the exclusive exporter of rotuman products, we ship worldwide and offer premium products and service</p>
         <div className="header-s"><h1>Explore Our Products</h1></div>
-        <div className="products">{Products.map(p => <Link href="/p/[id]" as={`/p/${p.id}`}><a><div style={{margin: `50px`, display: `column`}}><div style={{backgroundImage: `url(${p.image})`}} className="product-image"></div><p>{p.other ? p.other : p.id}</p></div></a></Link>)}</div>
+        <div className="products">{Products.map(p => <Link href="/p/[id]" as={`/p/${p.route}`}><a><div style={{margin: `50px`, display: `column`}}><div style={{backgroundImage: `url(${p.image})`}} className="product-image"></div><p>{p.other ? p.other : p.id}</p></div></a></Link>)}</div>
       </Wrapper>
     )
   }
