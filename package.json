@@ -5,31 +5,40 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start -p 3000",
     "heroku-postbuild": "npm run build",
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@types/leaflet": "^1.5.12",
     "babel-eslint": "^10.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "cluster": "^0.7.7",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "fs-extra": "^9.0.0",
     "gray-matter": "^4.0.2",
     "husky": "^4.2.3",
     "isomorphic-unfetch": "^3.0.0",
+    "leaflet": "^1.6.0",
+    "leaflet.gridlayer.googlemutant": "^0.9.0",
     "lint-staged": "^10.0.8",
     "next": "9.4.2",
     "next-images": "^1.3.1",
     "next-routes": "^1.4.2",
+    "os": "^0.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-leaflet": "^2.7.0",
+    "react-leaflet-google-layer": "^1.1.4",
+    "react-leaflet-universal": "^2.2.1",
     "react-select": "^3.0.8",
     "remark": "^12.0.0",
     "remark-html": "^11.0.2",
     "standard": "^14.3.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "url": "^0.11.0"
   },
   "now": {
     "alias": "next-go"

@@ -2,100 +2,107 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import Products from '/data'
-import Nav from 'components/Nav'
 import styled from 'styled-components'
+import dynamic from 'next/dynamic';
 import { getSortedPostsData } from '/lib/posts'
+const MyMap = dynamic(() => import('components/map'), {ssr: false});
 const Wrapper = styled.div`
   width: 100%;
-  margin: 0;
+  margin-top: 50px;
   padding: 0;
-  .header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    color: black;
-  }
+  text-align: center;
   .first {
-    width: 100%;
-    height: 300px;
-    margin: 0;
-    padding: 0;
-    background-image: url('/header.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    margin-bottom: 100px;
   }
-  .p-first, .p-second {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  .farms {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  .boxes {
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    justify-content: space-evenly;
   }
-  .farms div {
-    width: 100%;
-    height: 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  .ani:hover {
+    color: blue;
   }
-  .farm-1 {
-    background-image: url('/farm1.jpg');
+  .boxes div {
+    padding: 10px;
+    border: 1px solid black;
+    width: 250px;
   }
-  .farm-2 {
-    background-image: url('/farm2.jpg');
-  }
-  .farm-3 {
-    background-image: url('/farm3.jpeg');
-  }
-  .header-s {
+  .active {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    color: black;
+    justify-content: space-evenly;
   }
-  .products {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-  }
-  .prodicts p {
-    text-align: center;
-  }
-  .product-image {
-    width: 100px;
-    height: 100px;
+  .active div {
+    width: 200px;
+    height: 200px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+  .ac-1 {
+    background-image: url("/active_1.jpg");
+  }
+  .ac-2 {
+    background-image: url("/active_2.jpg");
+  }
+  .ac-3 {
+    background-image: url("/active_3.jpg");
+  }
+  .ac-4 {
+    background-image: url("/active_4.jpg");
+  }
+  .ac-5 {
+    background-image: url("/active_5.jpg");
+  }
+  .ac-6 {
+    background-image: url("/active_6.jpg");
+  }
+  .ac-7 {
+    background-image: url("/active_7.jpg");
+  }
+  .root {
+    height: 300px;
+    width: 300px;
+    overflow: false;
   }
 `
 class IndexPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {inBrowser: false}
+  }
+  componentDidMount() {
+    this.setState({ inBrowser: true });
   }
   render() {
     return (
       <Wrapper>
-        <Nav/>
-        <div className="header"><h1>Rotuman Exports</h1></div>
-        <div className="first"></div>
-        <p className="p-first">Rotuma is a beautiful island about 620km north of fiji with incredible nature and picturesque beaches and an abundance of crops</p>
-        <div className="farms">
-          <div className="farm-1"></div>
-          <div className="farm-2"></div>
-          <div className="farm-3"></div>
+        <h1 className="first">Seychelles Plastic Cleanup</h1>
+        <h1>What We Do</h1>
+        <div className="boxes">
+          <div>
+            <h1 className="ani">Operation clean beach</h1>
+            <p>We organize events and travel to the outer islands in the seychelles to clean plastic and maintian the beaches</p>
+          </div>
+          <div>
+            <h1 className="ani">The business side</h1>
+            <p>We take the plastic that we collect and sell it to companies</p>
+          </div>
         </div>
-        <p className="p-second">We are the exclusive exporter of rotuman products, we ship worldwide and offer premium products and service</p>
-        <div className="header-s"><h1>Explore Our Products</h1></div>
-        <div className="products">{Products.map(p => <Link href="/p/[id]" as={`/p/${p.route}`}><a><div style={{margin: `50px`, display: `column`}}><div style={{backgroundImage: `url(${p.image})`}} className="product-image"></div><p>{p.other ? p.other : p.id}</p></div></a></Link>)}</div>
+        <h1>See where the events are</h1>
+        <div className="root"><MyMap /></div>
+        <div className="active">
+          <div className="ac-1"></div>
+          <div className="ac-2"></div>
+          <div className="ac-3"></div>
+          <div className="ac-4"></div>
+          <div className="ac-5"></div>
+          <div className="ac-6"></div>
+          <div className="ac-7"></div>
+        </div>
+        <h1>Buy our plastic</h1>
+        <p>content about buying plastic</p>
       </Wrapper>
     )
   }
